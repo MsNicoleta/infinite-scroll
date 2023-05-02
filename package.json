@@ -1,8 +1,19 @@
 {
   "name": "Infinite-Scroll",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "script.js",
   "repository": "https://github.com/MsNicoleta/infinite-scroll.git",
   "author": "<msnicoleta@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "webpack-cli": "^5.0.2"
+  },
+  "scripts": {
+    "ios": "react-native run-ios",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "test:e2e":"yarn run test",
+    "test:e2e:build":"yarn run build"
+}
+
 }

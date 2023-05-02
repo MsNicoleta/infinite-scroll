@@ -3,24 +3,26 @@ const loader = document.getElementById('loader');
 
 let ready = false;
 let imagesLoaded = 0;
-let totalImages
+let totalImages = 0;
 let photosArray = [];
+let initialLoad = true;
 
 // Unsplash API
-const count = 30;
+// const count = 5; is the initial load
+const count = 5;
 const apiKey = 'i8bc1RRtY12DAKgqjWIte0D5rA_iOXTtcMo6b0kO0QA';
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 // Check if all images were loaded
 function imageLoaded() {
   imagesLoaded++;
-
-
   if (imagesLoaded === totalImages) {
     ready = true;
     loader.hidden = true;
-
-
+    initialLoad = false;
+    // const count = 30; is the after load
+    count = 30;
+    apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
   }
   
 }
