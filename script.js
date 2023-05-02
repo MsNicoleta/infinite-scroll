@@ -20,7 +20,7 @@ function imageLoaded() {
     ready = true;
     loader.hidden = true;
     initialLoad = false;
-    // const count = 30; is the after load
+    // const count = 30; is the load after 
     count = 30;
     apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
   }
@@ -28,10 +28,12 @@ function imageLoaded() {
 }
 
 //Helper Function to set attributes on DOM Elements
-function setAttributes(element, attributes) {
-  for (const key in attributes) {
-    element.setAttribute(key, attributes[key]);
-  }
+function setAttributes(element, { href, target, src, alt, title }) {
+  element.setAttribute('href', href);
+  element.setAttribute('target', target);
+  element.setAttribute('src', src);
+  element.setAttribute('alt', alt);
+  element.setAttribute('title', title);
 }
 
 
@@ -64,15 +66,10 @@ function displayPhotos() {
 }
 
 /* Get photos from Unsplash API  */
-async function getPhotos () {
-try {
-    const response = await fetch(apiUrl);
-    photosArray = await response.json();
-    displayPhotos();
-
-  } catch (error) {
-// Catch Error Here
-    }
+async function getPhotos() {
+  const response = await fetch(apiUrl);
+  photosArray = await response.json();
+  displayPhotos();
 }
 
 // Check to see if scrolling near bottom of page, Load More Photos
